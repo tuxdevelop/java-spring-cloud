@@ -90,6 +90,7 @@
     <version.io.github.openfeign-feign-okhttp>10.2.0</version.io.github.openfeign-feign-okhttp>
     <version.io.github.openfeign.opentracing>0.4.0</version.io.github.openfeign.opentracing>
     <version.io.opentracing.contrib-opentracing-kafka-spring>0.1.15</version.io.opentracing.contrib-opentracing-kafka-spring>
+    <version.io.opentracing.contrib-opentracing-kafka-streams>0.1.15</version.io.opentracing.contrib-opentracing-kafka-streams>
     <!-- spring-boot-starter-parent is a module of spring-boot-dependencies
         https://github.com/spring-projects/spring-boot/blob/master/spring-boot-starters/spring-boot-starter-parent/pom.xml -->
     <version.org.springframework.boot>2.2.0.RELEASE</version.org.springframework.boot>
@@ -145,6 +146,11 @@
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>opentracing-spring-cloud-kafka-starter</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>opentracing-spring-cloud-kafka-streams-starter</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -233,6 +239,11 @@
         <groupId>io.opentracing.contrib</groupId>
         <artifactId>opentracing-kafka-spring</artifactId>
         <version>${version.io.opentracing.contrib-opentracing-kafka-spring}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.opentracing.contrib</groupId>
+        <artifactId>opentracing-kafka-streams</artifactId>
+        <version>${version.io.opentracing.contrib-opentracing-kafka-streams}</version>
       </dependency>
       <dependency>
         <groupId>io.opentracing.contrib</groupId>
@@ -413,8 +424,8 @@
         <version>${version.maven-license-plugin}</version>
         <configuration>
           <header>${main.basedir}/header.txt</header>
-          <failIfMissing>true</failIfMissing>
-          <failIfUnknown>true</failIfUnknown>
+          <failIfMissing>false</failIfMissing>
+          <failIfUnknown>false</failIfUnknown>
           <excludes>
             <exclude>LICENSE</exclude>
             <exclude>Makefile</exclude>

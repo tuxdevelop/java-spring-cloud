@@ -14,19 +14,24 @@
     the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>opentracing-spring-cloud-parent</artifactId>
     <groupId>io.opentracing.contrib</groupId>
     <version>0.5.10-SNAPSHOT</version>
     <relativePath>../../</relativePath>
   </parent>
-  <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>opentracing-spring-cloud-reactor-starter</artifactId>
+
+  <artifactId>opentracing-spring-cloud-kafka-streams-starter</artifactId>
+  <name>opentracing-spring-cloud-kafka-streams-starter</name>
+  <description>opentracing-spring-cloud-kafka-streams-starter</description>
 
   <properties>
-    <main.basedir>${project.basedir}/../..</main.basedir>
+    <main.basedir>${project.basedir}/../../</main.basedir>
   </properties>
 
   <dependencies>
@@ -41,18 +46,41 @@
 
     <dependency>
       <groupId>io.opentracing.contrib</groupId>
-      <artifactId>opentracing-concurrent</artifactId>
-      <version>${version.io.opentracing.contrib-java-concurrent}</version>
+      <artifactId>opentracing-kafka-streams</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>io.opentracing.contrib</groupId>
-      <artifactId>opentracing-reactor</artifactId>
-      <version>${version.io.opentracing.contrib-opentracing-reactor}</version>
+      <artifactId>opentracing-kafka-client</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
+
     <dependency>
-      <groupId>io.projectreactor</groupId>
-      <artifactId>reactor-core</artifactId>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
       <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-streams</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -60,20 +88,7 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.opentracing.contrib</groupId>
-      <artifactId>opentracing-spring-web-starter</artifactId>
-      <version>${version.io.opentracing.contrib-opentracing-spring-web}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.annotation</groupId>
-      <artifactId>jakarta.annotation-api</artifactId>
-    </dependency>
+
   </dependencies>
+
 </project>

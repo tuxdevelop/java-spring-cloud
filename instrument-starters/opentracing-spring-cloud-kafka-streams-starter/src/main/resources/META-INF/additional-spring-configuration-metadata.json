@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "opentracing.spring.cloud.kafka-streams.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable Kafka Streams tracing.",
+      "defaultValue": true
+    }
+  ]
+}
